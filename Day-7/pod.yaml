@@ -1,0 +1,18 @@
+# Imperative way to create pod
+# kubectl run nginx-pod --image nginx:latest
+
+#Declarative way
+
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: nginx-pod-d
+  labels:
+    env: demo
+    type: frontend
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      ports:
+        - containerPort: 80
