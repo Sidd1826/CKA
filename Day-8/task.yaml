@@ -1,25 +1,23 @@
-kind: Deployment
 apiVersion: apps/v1
-metadata:
-  name: nginx
-  annotations:
-    kubernetes.io/change-cause: "Increasing replicas to 5"
+kind: Deployment
+metadata: 
+  name: nginx-rs
   labels:
     tier: backend
 spec:
-  template: 
+  template:
     metadata:
-      name: nginx
       labels:
         app: v1
+      name: nginx
     spec:
       containers:
-        - name: nginx
-          image: nginx:1.23.4
-          ports:
-            - containerPort: 80
-  replicas: 5
+      - name: nginx
+        image: nginx:1.23.4
+        ports:
+        - containerPort: 80
+  replicas: 3
   selector:
-    matchLabels: 
+    matchLabels:
       app: v1
 

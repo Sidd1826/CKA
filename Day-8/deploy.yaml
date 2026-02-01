@@ -1,7 +1,7 @@
 apiVersion:  apps/v1
 kind:  Deployment
 metadata:
-  name: nginx-deploy
+  name: myapp
   labels:
     env: dev
 spec:
@@ -12,11 +12,11 @@ spec:
         env: dev
     spec:
       containers:
-        - name: nginx
-          image: nginx
+        - name: myapp
+          image: nginx:1.23.4-alpine
           ports:
             - containerPort: 80
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels: 
       env: dev
