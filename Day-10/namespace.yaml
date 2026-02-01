@@ -1,0 +1,8 @@
+# Imperative way to create a Namespace in Kubernetes
+# kubectl create ns demo
+
+# Declarative way to create a Namespace in Kubernetes
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo
