@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: task-apps
+  labels:
+    env: dev
+spec:
+  containers:
+  - name: task-apps
+    image: busybox:1.28
+    command: ['sh', '-c', 'echo Hello from Task app container && sleep 3600']
+    env:
+    - name: FIRST_NAME
+      value: "Sidd"
+  initContainers:
+  - name: myinit-svc
+    image: busybox:1.28
+    command: ["sh", "-c"]
+    args: ["until nslookup myinit-svc.default.svc.cluster.local; do echo waiting for service to be up; sleep 2; done; echo Service is up!"]
